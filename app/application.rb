@@ -7,7 +7,7 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      m = Item.all.select{|i| i.name == req.split("/items/").last}
+      m = Item.all.select{|i| i.name == req.path.split("/items/").last}
       binding.pry
       if m.empty?
         resp.write "Item not found"
