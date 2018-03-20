@@ -3,7 +3,7 @@ class Application
   req = Rack::Request.new
 
   if req.path.match(/items/)
-    m = Item.all.select(|i| i.name == req.split("/items/").last)
+    m = Item.all.select{|i| i.name == req.split("/items/").last}
     if m.empty?
       resp.write "Item not found"
       resp.status  = 400
