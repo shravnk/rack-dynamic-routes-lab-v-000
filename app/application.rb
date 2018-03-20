@@ -1,6 +1,6 @@
 class Application
   resp = Rack::Response.new
-  req = Rack::Request.new
+  req = Rack::Request.new(env)
 
   if req.path.match(/items/)
     m = Item.all.select{|i| i.name == req.split("/items/").last}
